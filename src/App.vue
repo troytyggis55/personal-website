@@ -1,27 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <PageTitle msg="Trygve Jørgensen"></PageTitle>
+  <CustomButton></CustomButton>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script setup lang="ts">
+import {defineComponent} from "vue";
 
-export default defineComponent({
+import CustomButton from "@/components/CustomButton.vue";
+import PageTitle from "@/components/PageTitle.vue";
+
+defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    PageTitle,
+    CustomButton,
   }
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  border: 2px solid yellow;
 }
 </style>

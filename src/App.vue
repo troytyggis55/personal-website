@@ -6,12 +6,9 @@
   </div>
   <div class="g-container">
     <CardTemplate style="grid-area: 1 / 1 / 1 / 1">
-      <DynamicTitle msg="Om meg" level="3"/>
-      <p>Student på Gløshaugen som er glad i problemløsning og alt av teknologi. Har
-        omfattende erfaring i områder som programmering, småelektronikk, 3D printing osv.</p>
+      <MarkdownRenderer source="OmMeg.md"/>
     </CardTemplate>
     <CardTemplate style="grid-area: 2 / 1 / 3 / 1">
-      <p>Test</p>
     </CardTemplate>
 
     <CardTemplate style="grid-area: 1 / 2 / 3 / 2">
@@ -27,13 +24,15 @@ import {defineComponent} from "vue";
 
 import DynamicTitle from "@/components/DynamicTitle.vue";
 import CardTemplate from "@/components/CardTemplate.vue";
-import CustomFooter from "@/CustomFooter.vue";
+import CustomFooter from "@/components/CustomFooter.vue";
+import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 
 defineComponent({
   name: 'App',
   components: {
     DynamicTitle,
     CardTemplate,
+    MarkdownRenderer
   }
 });
 </script>

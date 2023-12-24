@@ -1,6 +1,9 @@
 <template>
-  <DynamicTitle msg="Trygve Jørgensen" level="1"/>
-
+  <div class="page-title">
+    <DynamicTitle msg="Trygve Jørgensen"
+                  level="1"/>
+    <img :src="require('./assets/ProfilePic.jpg')" alt="Profile picture"/>
+  </div>
   <div class="g-container">
     <CardTemplate style="grid-area: 1 / 1 / 1 / 1">
       <DynamicTitle msg="Om meg" level="3"/>
@@ -15,6 +18,8 @@
       <DynamicTitle msg="CV" level="3"/>
     </CardTemplate>
   </div>
+
+  <CustomFooter/>
 </template>
 
 <script setup lang="ts">
@@ -22,6 +27,7 @@ import {defineComponent} from "vue";
 
 import DynamicTitle from "@/components/DynamicTitle.vue";
 import CardTemplate from "@/components/CardTemplate.vue";
+import CustomFooter from "@/CustomFooter.vue";
 
 defineComponent({
   name: 'App',
@@ -33,15 +39,27 @@ defineComponent({
 </script>
 
 <style>
+:root{
+  --horizontal-padding: 150px;
+}
 #app {
-  border: 2px solid yellow;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
 }
 .g-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 200px);
-  gap: 40px;
+  grid-template-rows: repeat(2, 200px);
+  gap: 50px;
+  overflow: visible;
+}
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-title img {
+  height: 100px;
+  border-radius: 50px;
 }
 </style>

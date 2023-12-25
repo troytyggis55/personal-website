@@ -11,15 +11,15 @@
 
     <CardTemplate style="grid-area: 1 / 3 / 3 / 5">
       <MarkdownRenderer source="CV.md"/>
-      <embed src="/CV.pdf"/>
+      <embed src="/CV.pdf#toolbar=0&view=fitH"/>
     </CardTemplate>
 
     <CardTemplate style="grid-area: 2 / 1 / 2 / 1">
-      <MarkdownRenderer source="Skills.md"/>
+      <MarkdownRenderer source="AboutThisSite.md"/>
     </CardTemplate>
 
     <CardTemplate style="grid-area: 2 / 2 / 2 / 2">
-
+      <MarkdownRenderer source="Skills.md"/>
     </CardTemplate>
   </div>
 

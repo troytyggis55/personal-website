@@ -18,18 +18,21 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #83b0e498;
   border-radius: 20px;
   overflow: hidden;
+  transition: 0.3s;
 }
 
 .outer:hover {
   box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.3);
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(134, 150, 220, 0.77);
+  }
 }
 
 .inner {
   height: 100%;
-
   padding-left: 20px;
   padding-right: 20px;
-
   overflow: auto;
   overflow-wrap: break-word;
 }
@@ -43,10 +46,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(131, 150, 228, 0.77);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(134, 184, 220, 0.77);
+  background: transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 </style>

@@ -1,4 +1,8 @@
-#### Skills (desc)
+#### Developer Skills
 - Java
 - Python
-- HTML, CSS, Typscript, vue etc
+- HTML, CSS
+- Typescript
+- Vue
+- SQL
+- Git

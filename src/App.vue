@@ -1,20 +1,28 @@
 <template>
   <div class="page-title">
-    <DynamicTitle msg="Trygve Jørgensen"
-                  level="1"/>
-    <img :src="require('./assets/ProfilePic.jpg')" alt="Profile picture"/>
+    <DynamicTitle msg="Trygve Jørgensen" level="1"/>
+    <img :src="require('../public/ProfilePic.jpg')" alt="Profile picture"/>
   </div>
+
   <div class="g-container">
-    <CardTemplate style="grid-area: 1 / 1 / 1 / 1">
-      <MarkdownRenderer source="OmMeg.md"/>
-    </CardTemplate>
-    <CardTemplate style="grid-area: 2 / 1 / 3 / 1">
+    <CardTemplate style="grid-area: 1 / 1 / 1 / 3">
+      <MarkdownRenderer source="AboutMe.md"/>
     </CardTemplate>
 
-    <CardTemplate style="grid-area: 1 / 2 / 3 / 2">
-      <DynamicTitle msg="CV" level="3"/>
+    <CardTemplate style="grid-area: 1 / 3 / 3 / 5">
+      <MarkdownRenderer source="CV.md"/>
+      <embed src="/CV.pdf"/>
+    </CardTemplate>
+
+    <CardTemplate style="grid-area: 2 / 1 / 2 / 1">
+      <MarkdownRenderer source="Skills.md"/>
+    </CardTemplate>
+
+    <CardTemplate style="grid-area: 2 / 2 / 2 / 2">
+
     </CardTemplate>
   </div>
+
 
   <CustomFooter/>
 </template>
@@ -39,7 +47,7 @@ defineComponent({
 
 <style>
 :root{
-  --horizontal-padding: 150px;
+  --horizontal-padding: 200px;
 }
 #app {
   padding-left: var(--horizontal-padding);
@@ -47,18 +55,23 @@ defineComponent({
 }
 .g-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 200px);
-  gap: 50px;
+  gap: 40px;
   overflow: visible;
 }
 .page-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 20px 0;
 }
 .page-title img {
   height: 100px;
   border-radius: 50px;
+}
+embed {
+  width: 100%;
+  height: 100%;
 }
 </style>

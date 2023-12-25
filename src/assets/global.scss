@@ -24,6 +24,10 @@ body {
   }
 }
 
+p {
+  line-height: 1.5em;
+}
+
 h1, h2, h3 , h4, h5, h6 {
   font-style: italic;
 }
@@ -40,12 +44,27 @@ h2 {
 
 h3 {
   font-size: 1.5em;
-  margin-top: 10px;
-  margin-bottom: -3px;
+  margin-top: 15px;
+  margin-bottom: -10px;
 }
 
 h4 {
   font-size: 1em;
-  margin-top: -1px;
-  margin-bottom: -1px;
+  margin-bottom: -10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #201289;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7769DD;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5948D5;
 }

@@ -9,5 +9,10 @@ export default {
 }
 </script>
 <style>
-
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  border-top: 1px solid rgba(204, 204, 204, 0.51);
+}
 </style>

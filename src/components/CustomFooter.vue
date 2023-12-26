@@ -1,6 +1,12 @@
 <template>
   <footer>
-    <p>This is my footer</p>
+    <div class="details">
+      <p>+47 94 05 05 56</p>
+      <a href="mailito: trygveabjo@gmail.com"><p>trygveabjo@gmail.com</p></a>
+    </div>
+    <div class="icons">
+      <a href="https://github.com/troytyggis55" target=”_blank”><img src="github-mark-white.svg" alt="Github Logo"/></a>
+    </div>
   </footer>
 </template>
 <script>
@@ -8,11 +14,37 @@ export default {
   name: 'CustomFooter'
 }
 </script>
-<style>
+<style scoped>
 footer {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 40px;
+
   margin-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+
   border-top: 1px solid rgba(204, 204, 204, 0.51);
+  text-align: right;
+}
+
+p {
+  line-height: 0.5;
+}
+
+div {
+  width: 100%;
+}
+
+.details {
+  text-align: right;
+}
+.icons {
+  text-align: left;
+}
+
+img {
+  height: 40px;
 }
 </style>

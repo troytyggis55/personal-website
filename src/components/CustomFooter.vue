@@ -16,17 +16,12 @@ export default {
 </script>
 <style scoped>
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-
-  margin-top: 50px;
+  display: block;
+  margin-top: 20px;
   padding-top: 20px;
-  padding-bottom: 50px;
-
+  padding-bottom: 20px;
   border-top: 1px solid rgba(204, 204, 204, 0.51);
-  text-align: right;
+  text-align: center;
 }
 
 p {
@@ -35,16 +30,37 @@ p {
 
 div {
   width: 100%;
-}
-
-.details {
-  text-align: right;
-}
-.icons {
-  text-align: left;
+  padding-bottom: 20px;
 }
 
 img {
   height: 40px;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+@media screen and (min-width: 480px) {
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    margin-top: 50px;
+    padding-bottom: 50px;
+
+    text-align: right;
+  }
+
+  .details {
+    text-align: right;
+  }
+  .icons {
+    justify-content: left;
+  }
 }
 </style>

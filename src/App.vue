@@ -5,20 +5,20 @@
   </div>
 
   <div class="g-container">
-    <CardTemplate style="grid-area: 1 / 1 / 1 / 3">
+    <CardTemplate class="aboutme">
       <MarkdownRenderer source="AboutMe.md"/>
     </CardTemplate>
 
-    <CardTemplate style="grid-area: 1 / 3 / 3 / 5">
+    <CardTemplate class="cv">
       <MarkdownRenderer source="CV.md"/>
       <embed src="./CV.pdf#toolbar=0&view=fitH"/>
     </CardTemplate>
 
-    <CardTemplate style="grid-area: 2 / 2 / 2 / 2">
+    <CardTemplate class="skills">
       <MarkdownRenderer source="Skills.md"/>
     </CardTemplate>
 
-    <CardTemplate style="grid-area: 2 / 1 / 2 / 1">
+    <CardTemplate class="aboutthissite">
       <MarkdownRenderer source="AboutThisSite.md"/>
     </CardTemplate>
   </div>
@@ -47,7 +47,7 @@ defineComponent({
 
 <style>
 :root {
-  --horizontal-padding: 20px;
+  --horizontal-padding: 5%;
 }
 
 #app {
@@ -62,7 +62,7 @@ defineComponent({
   margin: 20px 0;
 
   h1 {
-    font-size: 1.8em;
+    font-size: 2.2em;
   }
 
   img {
@@ -71,20 +71,20 @@ defineComponent({
   }
 }
 
-.g-container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
 embed {
   width: 100%;
   height: 100%;
 }
 
+.g-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 @media screen and (min-width: 480px) {
   :root{
-    --horizontal-padding: 200px;
+    --horizontal-padding: 5%;
   }
 
   .page-title {
@@ -99,10 +99,48 @@ embed {
 
   .g-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 200px);
-    gap: 40px;
+    gap: 20px;
     overflow: visible;
+  }
+
+  .aboutme {
+    grid-area: 1 / 1 / 1 / 4;
+  }
+
+  .cv {
+    grid-area: 2 / 1 / 2 / 3;
+  }
+
+  .aboutthissite {
+    grid-area: 3 / 1 / 3 / 4;
+  }
+
+  .skills {
+    grid-area: 2 / 3 / 2 / 4;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .g-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .aboutme {
+    grid-area: 1 / 1 / 1 / 3;
+  }
+
+  .cv {
+    grid-area: 1 / 3 / 3 / 5;
+  }
+
+  .aboutthissite {
+    grid-area: 2 / 1 / 2 / 1;
+  }
+
+  .skills {
+    grid-area: 2 / 2 / 2 / 2;
   }
 }
 </style>

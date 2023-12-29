@@ -23,6 +23,7 @@
     </CardTemplate>
   </div>
 
+  <InformationNavBar/>
 
   <CustomFooter/>
 </template>
@@ -34,6 +35,7 @@ import DynamicTitle from "@/components/DynamicTitle.vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+import InformationNavBar from "@/components/InformationNavBar.vue";
 
 defineComponent({
   name: 'App',

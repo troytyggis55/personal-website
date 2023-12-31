@@ -1,31 +1,36 @@
 <template>
-  <div class="page-title">
-    <h1>Trygve Jørgensen</h1>
-    <img src="ProfilePic.jpg" alt="Profile picture"/>
-  </div>
+  <Transition name="title" appear>
+    <div class="page-title">
+      <h1>Trygve Jørgensen</h1>
+      <img src="ProfilePic.jpg" alt="Profile picture"/>
+    </div>
+  </Transition>
 
-  <div class="card-container">
-    <CardTemplate class="aboutme">
-      <MarkdownRenderer source="AboutMe.md"/>
-    </CardTemplate>
+  <Transition name="grid" appear>
+    <div>
+      <div class="card-container">
+        <CardTemplate class="aboutme">
+          <MarkdownRenderer source="AboutMe.md"/>
+        </CardTemplate>
 
-    <CardTemplate class="cv">
-      <MarkdownRenderer source="CV.md"/>
-      <embed src="CV.pdf#toolbar=0&view=fitH"/>
-    </CardTemplate>
+        <CardTemplate class="cv">
+          <MarkdownRenderer source="CV.md"/>
+          <embed src="CV.pdf#toolbar=0&view=fitH"/>
+        </CardTemplate>
 
-    <CardTemplate class="skills">
-      <MarkdownRenderer source="Skills.md"/>
-    </CardTemplate>
+        <CardTemplate class="skills">
+          <MarkdownRenderer source="Skills.md"/>
+        </CardTemplate>
 
-    <CardTemplate class="aboutthissite">
-      <MarkdownRenderer source="AboutThisSite.md"/>
-    </CardTemplate>
-  </div>
+        <CardTemplate class="aboutthissite">
+          <MarkdownRenderer source="AboutThisSite.md"/>
+        </CardTemplate>
+      </div>
 
-  <InformationNavBar/>
-
-  <CustomFooter/>
+      <InformationNavBar/>
+      <CustomFooter/>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -46,6 +51,24 @@ defineComponent({
 </script>
 
 <style>
+.title-enter-active, .title-leave-active {
+  transition: all 1.5s ease;
+}
+
+.title-enter-from, .title-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.grid-enter-active, .grid-leave-active {
+  transition: all 1.5s ease 0.5s;
+}
+
+.grid-enter-from, .grid-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
 :root {
   --horizontal-padding: 5%;
 }

@@ -6,16 +6,19 @@
       <li><a @click="mode = 'personal'">Personal</a></li>
     </ul>
   </nav>
-  <div class="container">
-    <CardTemplate v-if="mode === 'academic'" key="academic">
-      <MarkdownRenderer source="academic/Dijkstra.md"/>
-    </CardTemplate>
 
-    <CardTemplate v-if="mode === 'personal'" key="personal">
+  <div class="container" v-if="mode === 'academic'" key="academic">
+      <CardTemplate>
+        <MarkdownRenderer source="academic/Dijkstra.md"/>
+      </CardTemplate>
+  </div>
+
+  <div class="container" v-if="mode === 'personal'" key="personal">
+    <CardTemplate>
       <MarkdownRenderer source="personal/Bezier.md"/>
     </CardTemplate>
 
-    <CardTemplate v-if="mode === 'personal'" key="personal">
+    <CardTemplate>
       <MarkdownRenderer source="personal/FluidSim.md"/>
     </CardTemplate>
   </div>
@@ -35,7 +38,15 @@
   flex-direction: column;
   gap: 20px;
   max-width: 1000px;
-margin: 0 auto;
+  margin: 0 auto;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: opacity 0.5s;
+}
+
+.v-enter-from, .v-leave-to {
+  opacity: 0;
 }
 
 /* Heavily copied from https://github.com/frontend-joe/css-navbars/blob/main/navbar-15/styles.css */

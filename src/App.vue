@@ -1,17 +1,17 @@
 <template>
   <div class="page-title">
-    <DynamicTitle msg="Trygve Jørgensen" level="1"/>
-    <img :src="require('../public/ProfilePic.jpg')" alt="Profile picture"/>
+    <h1>Trygve Jørgensen</h1>
+    <img src="ProfilePic.jpg" alt="Profile picture"/>
   </div>
 
-  <div class="g-container">
+  <div class="card-container">
     <CardTemplate class="aboutme">
       <MarkdownRenderer source="AboutMe.md"/>
     </CardTemplate>
 
     <CardTemplate class="cv">
       <MarkdownRenderer source="CV.md"/>
-      <embed src="./CV.pdf#toolbar=0&view=fitH"/>
+      <embed src="CV.pdf#toolbar=0&view=fitH"/>
     </CardTemplate>
 
     <CardTemplate class="skills">
@@ -31,7 +31,6 @@
 <script setup lang="ts">
 import {defineComponent} from "vue";
 
-import DynamicTitle from "@/components/DynamicTitle.vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
@@ -40,7 +39,6 @@ import InformationNavBar from "@/components/InformationNavBar.vue";
 defineComponent({
   name: 'App',
   components: {
-    DynamicTitle,
     CardTemplate,
     MarkdownRenderer
   }
@@ -78,7 +76,7 @@ embed {
   height: 100%;
 }
 
-.g-container {
+.card-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -99,7 +97,7 @@ embed {
     }
   }
 
-  .g-container {
+  .card-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 200px);
@@ -125,7 +123,7 @@ embed {
 }
 
 @media screen and (min-width: 768px) {
-  .g-container {
+  .card-container {
     grid-template-columns: repeat(4, 1fr);
   }
 

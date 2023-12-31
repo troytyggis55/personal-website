@@ -1,18 +1,44 @@
 <template>
+  <h2 style="text-align: center; padding-top: 30px;">Completed Projects</h2>
   <nav>
     <ul class="menu">
-      <li><a href="#aboutme">Academic Projects</a></li>
-      <li><a href="#cv">Personal Projects</a></li>
+      <li><a @click="mode = 'academic'">Academic</a></li>
+      <li><a @click="mode = 'personal'">Personal</a></li>
     </ul>
   </nav>
+  <div class="container">
+    <CardTemplate v-if="mode === 'academic'" key="academic">
+      <MarkdownRenderer source="academic/Dijkstra.md"/>
+    </CardTemplate>
+
+    <CardTemplate v-if="mode === 'personal'" key="personal">
+      <MarkdownRenderer source="personal/Bezier.md"/>
+    </CardTemplate>
+
+    <CardTemplate v-if="mode === 'personal'" key="personal">
+      <MarkdownRenderer source="personal/FluidSim.md"/>
+    </CardTemplate>
+  </div>
 </template>
 
 <script setup lang="ts">
+  import {ref} from "vue";
+  import CardTemplate from "@/components/CardTemplate.vue";
+  import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+
+  const mode = ref("academic");
 </script>
 
 <style scoped>
-/* Heavily copied from https://github.com/frontend-joe/css-navbars/blob/main/navbar-15/styles.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1000px;
+margin: 0 auto;
+}
 
+/* Heavily copied from https://github.com/frontend-joe/css-navbars/blob/main/navbar-15/styles.css */
 ul {
   margin: 0;
   padding: 0;
@@ -22,6 +48,7 @@ ul {
 nav {
   width: 100%;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 a {
@@ -34,13 +61,13 @@ a {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  height: 70px;
+  height: 50px;
   gap: 20px;
 }
 
 .menu li {
   display: inline-block;
-  width: 180px;
+  width: 120px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -73,7 +100,7 @@ a {
   width: 100%;
   height: 3px;
   bottom: 3px;
-  left: 0px;
+  left: 0;
   background-color: #3e95ff;
   transition: all 0.4s ease-in-out;
   scale: 0 0;

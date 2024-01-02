@@ -1,44 +1,49 @@
 <template>
-  <div class="page-title">
-    <DynamicTitle msg="Trygve Jørgensen" level="1"/>
-    <img :src="require('../public/ProfilePic.jpg')" alt="Profile picture"/>
-  </div>
+  <Transition name="title" appear>
+    <div class="page-title">
+      <h1>Trygve Jørgensen</h1>
+      <img src="ProfilePic.jpg" alt="Profile picture"/>
+    </div>
+  </Transition>
 
-  <div class="g-container">
-    <CardTemplate class="aboutme">
-      <MarkdownRenderer source="AboutMe.md"/>
-    </CardTemplate>
+  <Transition name="grid" appear>
+    <div>
+      <div class="card-container">
+        <CardTemplate class="aboutme">
+          <MarkdownRenderer source="AboutMe.md"/>
+        </CardTemplate>
 
-    <CardTemplate class="cv">
-      <MarkdownRenderer source="CV.md"/>
-      <embed src="./CV.pdf#toolbar=0&view=fitH"/>
-    </CardTemplate>
+        <CardTemplate class="cv">
+          <MarkdownRenderer source="CV.md"/>
+          <embed src="CV.pdf#toolbar=0&view=fitH"/>
+        </CardTemplate>
 
-    <CardTemplate class="skills">
-      <MarkdownRenderer source="Skills.md"/>
-    </CardTemplate>
+        <CardTemplate class="skills">
+          <MarkdownRenderer source="Skills.md"/>
+        </CardTemplate>
 
-    <CardTemplate class="aboutthissite">
-      <MarkdownRenderer source="AboutThisSite.md"/>
-    </CardTemplate>
-  </div>
+        <CardTemplate class="aboutthissite">
+          <MarkdownRenderer source="AboutThisSite.md"/>
+        </CardTemplate>
+      </div>
 
-
-  <CustomFooter/>
+      <InformationNavBar/>
+      <CustomFooter/>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
 import {defineComponent} from "vue";
 
-import DynamicTitle from "@/components/DynamicTitle.vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+import InformationNavBar from "@/components/InformationNavBar.vue";
 
 defineComponent({
   name: 'App',
   components: {
-    DynamicTitle,
     CardTemplate,
     MarkdownRenderer
   }
@@ -46,6 +51,24 @@ defineComponent({
 </script>
 
 <style>
+.title-enter-active, .title-leave-active {
+  transition: all 1.5s ease;
+}
+
+.title-enter-from, .title-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.grid-enter-active, .grid-leave-active {
+  transition: all 1.5s ease 0.5s;
+}
+
+.grid-enter-from, .grid-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
 :root {
   --horizontal-padding: 5%;
 }
@@ -76,7 +99,7 @@ embed {
   height: 100%;
 }
 
-.g-container {
+.card-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -97,7 +120,7 @@ embed {
     }
   }
 
-  .g-container {
+  .card-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 200px);
@@ -123,7 +146,7 @@ embed {
 }
 
 @media screen and (min-width: 768px) {
-  .g-container {
+  .card-container {
     grid-template-columns: repeat(4, 1fr);
   }
 

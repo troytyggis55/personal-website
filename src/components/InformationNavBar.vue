@@ -2,8 +2,8 @@
   <h2 style="text-align: center; padding-top: 30px;">Completed Projects</h2>
   <nav>
     <ul class="menu">
-      <li><a @click="mode = 'academic'">Academic</a></li>
-      <li><a @click="mode = 'personal'">Personal</a></li>
+      <li><a @click="mode = 'academic'" :class="{selected: mode === 'academic'}">Academic</a></li>
+      <li><a @click="mode = 'personal'" :class="{selected: mode === 'personal'}">Personal</a></li>
     </ul>
   </nav>
 
@@ -82,14 +82,20 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-.menu > li:hover > a {
+.menu > li:hover > a, .menu > li > a.selected {
   color: #3e95ff;
 }
 
-.menu > li:hover > a::before {
+.menu > li:hover > a::before{
+  visibility: visible;
+  scale: 0.5 0.8;
+}
+
+.menu > li > a.selected::before {
   visibility: visible;
   scale: 1 1;
 }
+
 
 .menu > li a {
   color: aliceblue;

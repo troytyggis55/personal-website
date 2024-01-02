@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .outer:hover {
   box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.3);
+  transform: scale(1.01);
 
   ::-webkit-scrollbar-thumb {
     background: rgba(134, 150, 220, 0.77);

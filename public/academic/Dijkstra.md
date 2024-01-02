@@ -1,3 +1,8 @@
+---
+title: Dijkstra's Algorithm
+date: 2024-01-01
+---
+
 ## Dijkstra's Algorithm
 
 ### Description

@@ -15,7 +15,8 @@
 
         <CardTemplate class="cv">
           <MarkdownRenderer source="CV.md"/>
-          <embed src="CV.pdf#toolbar=0&view=fitH"/>
+          <embed v-if="!isMobile" src="CV.pdf#toolbar=0&view=fitH" class="CVpdf" alt="CV"/>
+          <img v-if="isMobile" src="CV.png" class="CVpng" alt="CV"/>
         </CardTemplate>
 
         <CardTemplate class="skills">
@@ -34,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import {defineComponent} from "vue";
+import {defineComponent, ref} from "vue";
 
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
@@ -48,6 +49,13 @@ defineComponent({
     MarkdownRenderer
   }
 });
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+const isMobile = ref(isMobileDevice());
+
 </script>
 
 <style>
@@ -94,9 +102,13 @@ defineComponent({
   }
 }
 
-embed {
+.CVpdf {
   width: 100%;
   height: 100%;
+}
+
+.CVpng {
+  width: 100%;
 }
 
 .card-container {

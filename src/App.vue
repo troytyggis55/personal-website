@@ -28,7 +28,7 @@
         </CardTemplate>
       </div>
 
-      <!-- <InformationNavBar/> -->
+      <InformationNavBar/>
       <CustomFooter/>
     </div>
   </Transition>

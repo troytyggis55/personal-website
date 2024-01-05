@@ -1,8 +1,11 @@
 <template>
-  <div class="details">
-    <p v-if="metaData.date !== ''">{{ metaData.date }}</p>
-    <p v-if="metaData.repo !== ''">Github: <a :href="metaData.repo">{{ metaData.repo }}</a></p>
-    <p v-if="metaData.category !== ''">{{ metaData.category }}</p>
+  <div class="header">
+    <h2 class="title">{{ metaData.title }}</h2>
+    <div class="details">
+      <p v-if="metaData.date !== ''">{{ new Date(metaData.date).toDateString() }}</p>
+      <p v-if="metaData.repo !== ''"><a :href="metaData.repo">Github</a></p>
+      <p v-if="metaData.category !== ''">{{ metaData.category }}</p>
+    </div>
   </div>
 
   <div v-html="markdown.render(markdownContent)" />
@@ -21,6 +24,7 @@ const props = defineProps({
 });
 
 interface FrontMatter {
+  title?: string;
   date?: string;
   repo?: string;
   category?: string;
@@ -28,7 +32,7 @@ interface FrontMatter {
 
 const markdown = new MarkdownIt();
 const markdownContent = ref('');
-const metaData = ref<FrontMatter>({ date: '', repo: '', category: '' });
+const metaData = ref<FrontMatter>({ title: '', date: '', repo: '', category: '' });
 
 onMounted( () => {
   fetch(props.source)
@@ -37,6 +41,7 @@ onMounted( () => {
       const { body, attributes } = frontmatter<FrontMatter>(text);
       markdownContent.value = body;
       metaData.value = {
+        title: attributes.title ?? '',
         date: attributes.date ?? '',
         repo: attributes.repo ?? '',
         category: attributes.category ?? ''
@@ -46,18 +51,27 @@ onMounted( () => {
 </script>
 
 <style scoped>
-.details {
-  margin-top: 10px;
-  margin-bottom: 0;
+.header {
+  margin-top: 20px;
 }
 
-.details p {
+.title {
   margin: 0;
-  font-size: 0.8rem;
-  color: #dcdcdc;
+  padding: 0;
 }
 
-.details p a {
+.details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0 20px;
+}
+
+.details p, .details p a {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
   color: #dcdcdc;
 }
 </style>

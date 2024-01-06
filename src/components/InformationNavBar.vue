@@ -19,10 +19,6 @@
     </CardTemplate>
 
     <CardTemplate class="card">
-      <MarkdownRenderer source="personal/FluidSim.md"/>
-    </CardTemplate>
-
-    <CardTemplate class="card">
       <MarkdownRenderer source="personal/Bezier.md"/>
     </CardTemplate>
   </div>

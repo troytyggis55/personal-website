@@ -3,12 +3,12 @@
     <h2 class="title">{{ metaData.title }}</h2>
     <div class="details">
       <p v-if="metaData.date !== ''">{{ new Date(metaData.date).toDateString() }}</p>
-      <p v-if="metaData.repo !== ''"><a :href="metaData.repo">Github</a></p>
+      <p v-if="metaData.repo !== ''"><a :href="metaData.repo" target="_blank">Github</a></p>
       <p v-if="metaData.category !== ''">{{ metaData.category }}</p>
     </div>
   </div>
 
-  <div v-html="markdown.render(markdownContent)" />
+  <div class="md" v-html="markdown.render(markdownContent)" />
 </template>
 
 <script setup lang="ts">
@@ -73,5 +73,20 @@ onMounted( () => {
   padding: 0;
   font-size: 0.8rem;
   color: #dcdcdc;
+}
+</style>
+
+<style>
+.md img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .md img {
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+  }
 }
 </style>

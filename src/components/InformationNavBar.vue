@@ -8,18 +8,22 @@
   </nav>
 
   <div class="container" v-if="mode === 'academic'" key="academic">
-      <CardTemplate>
+      <CardTemplate class="card">
         <MarkdownRenderer source="academic/Dijkstra.md"/>
       </CardTemplate>
   </div>
 
   <div class="container" v-if="mode === 'personal'" key="personal">
-    <CardTemplate>
-      <MarkdownRenderer source="personal/Bezier.md"/>
+    <CardTemplate class="card">
+      <MarkdownRenderer source="personal/FluidSim.md"/>
     </CardTemplate>
 
-    <CardTemplate>
+    <CardTemplate class="card">
       <MarkdownRenderer source="personal/FluidSim.md"/>
+    </CardTemplate>
+
+    <CardTemplate class="card">
+      <MarkdownRenderer source="personal/Bezier.md"/>
     </CardTemplate>
   </div>
 </template>
@@ -36,9 +40,30 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  max-width: 1000px;
+  max-width: 1100px;
+  max-height: 600px;
   margin: 0 auto;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(134, 150, 220, 0.77);
+  border-radius: 5px;
+}
+
+.card {
+  max-width: 95%;
+  flex-shrink: 0;
 }
 
 .v-enter-active, .v-leave-active {
@@ -95,7 +120,6 @@ a {
   visibility: visible;
   scale: 1 1;
 }
-
 
 .menu > li a {
   color: aliceblue;

@@ -79,14 +79,13 @@ onMounted( () => {
 <style>
 .md img {
   width: 100%;
-  height: auto;
+  height: 100%; /* changed to 100% */
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: contain; /* ensures aspect ratio is maintained */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (min-width: 768px) {
-  .md img {
-    width: 80%;
-    height: auto;
-    margin-left: 10%;
-  }
-}
 </style>

@@ -9,7 +9,7 @@
 
   <div class="container" v-if="mode === 'academic'" key="academic">
       <CardTemplate class="card">
-        <MarkdownRenderer source="academic/Dijkstra.md"/>
+        <MarkdownRenderer source="academic/Pathfinding.md"/>
       </CardTemplate>
   </div>
 

@@ -9,17 +9,17 @@
 
   <div class="container" v-if="mode === 'academic'" key="academic">
       <CardTemplate class="card">
-        <MarkdownRenderer source="academic/Pathfinding.md"/>
+        <MarkdownRenderer source="Pathfinding.md"/>
       </CardTemplate>
   </div>
 
   <div class="container" v-if="mode === 'personal'" key="personal">
     <CardTemplate class="card">
-      <MarkdownRenderer source="personal/FluidSim.md"/>
+      <MarkdownRenderer source="FluidSim.md"/>
     </CardTemplate>
 
     <CardTemplate class="card">
-      <MarkdownRenderer source="personal/Bezier.md"/>
+      <MarkdownRenderer source="Bezier.md"/>
     </CardTemplate>
   </div>
 </template>
@@ -28,6 +28,7 @@
   import {ref} from "vue";
   import CardTemplate from "@/components/CardTemplate.vue";
   import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+
 
   const mode = ref("academic");
 </script>

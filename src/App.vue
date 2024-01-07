@@ -46,7 +46,9 @@ defineComponent({
   name: 'App',
   components: {
     CardTemplate,
-    MarkdownRenderer
+    MarkdownRenderer,
+    CustomFooter,
+    InformationNavBar
   }
 });
 

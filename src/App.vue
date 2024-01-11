@@ -26,12 +26,24 @@
         <CardTemplate class="aboutthissite">
           <MarkdownRenderer source="AboutThisSite.md"/>
         </CardTemplate>
+
+        <CardTemplate class="infoCard">
+          <MarkdownRenderer source="FluidSim.md"/>
+        </CardTemplate>
+
+        <CardTemplate class="infoCard">
+          <MarkdownRenderer source="Test.md"/>
+        </CardTemplate>
       </div>
 
       <h2 style="text-align: center; padding-top: 30px;">Projects and Experiences</h2>
       <InformationNavBar @infoStateEmit="updateInfoState"/>
 
       <div class="infoContainer" v-if="infoState === 'academic'">
+        <CardTemplate class="infoCard">
+          <MarkdownRenderer source="Test.md"/>
+        </CardTemplate>
+
         <CardTemplate class="infoCard">
           <MarkdownRenderer source="Pathfinding.md"/>
         </CardTemplate>

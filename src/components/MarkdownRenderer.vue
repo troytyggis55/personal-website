@@ -47,6 +47,7 @@ onMounted( () => {
         category: attributes.category ?? ''
       }
     })
+    .catch(err => markdownContent.value = "Could not load markdown file: " + err.toString());
 });
 </script>
 

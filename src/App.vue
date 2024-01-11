@@ -1,6 +1,6 @@
 <template>
   <Transition name="title" appear>
-    <div class="page-title">
+    <div class="pageTitle">
       <h1>Trygve Jørgensen</h1>
       <img src="ProfilePic.jpg" alt="Profile picture"/>
     </div>
@@ -8,7 +8,7 @@
 
   <Transition name="grid" appear>
     <div>
-      <div class="card-container">
+      <div class="gridCardContainer">
         <CardTemplate class="aboutme">
           <MarkdownRenderer source="AboutMe.md"/>
         </CardTemplate>
@@ -28,7 +28,25 @@
         </CardTemplate>
       </div>
 
-      <InformationNavBar/>
+      <h2 style="text-align: center; padding-top: 30px;">Projects and Experiences</h2>
+      <InformationNavBar @infoStateEmit="updateInfoState"/>
+
+      <div class="infoContainer" v-if="infoState === 'academic'">
+        <CardTemplate class="infoCard">
+          <MarkdownRenderer source="Pathfinding.md"/>
+        </CardTemplate>
+      </div>
+
+      <div class="infoContainer" v-if="infoState === 'personal'">
+        <CardTemplate class="infoCard">
+          <MarkdownRenderer source="FluidSim.md"/>
+        </CardTemplate>
+
+        <CardTemplate class="infoCard">
+          <MarkdownRenderer source="Bezier.md"/>
+        </CardTemplate>
+      </div>
+
       <CustomFooter/>
     </div>
   </Transition>
@@ -40,7 +58,7 @@ import {defineComponent, ref} from "vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
-import InformationNavBar from "@/components/InformationNavBar.vue";
+import InformationNavBar from "@/components/InfoNavBar.vue";
 
 defineComponent({
   name: 'App',
@@ -57,7 +75,11 @@ function isMobileDevice() {
 }
 
 const isMobile = ref(isMobileDevice());
+const infoState = ref("academic");
 
+const updateInfoState = (newState: string) => {
+  infoState.value = newState;
+}
 </script>
 
 <style>
@@ -88,7 +110,7 @@ const isMobile = ref(isMobileDevice());
   padding-right: var(--horizontal-padding);
 }
 
-.page-title {
+.pageTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -113,18 +135,56 @@ const isMobile = ref(isMobileDevice());
   width: 100%;
 }
 
-.card-container {
+.gridCardContainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 1100px;
+  max-height: 600px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(134, 150, 220, 0.77);
+  border-radius: 5px;
+}
+
+.infoCard {
+  max-width: 95%;
+  flex-shrink: 0;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: opacity 0.5s;
+}
+
+.v-enter-from, .v-leave-to {
+  opacity: 0;
+}
+
 
 @media screen and (min-width: 480px) {
   :root{
     --horizontal-padding: 5%;
   }
 
-  .page-title {
+  .pageTitle {
     h1 {
       font-size: 3em;
     }
@@ -134,7 +194,7 @@ const isMobile = ref(isMobileDevice());
     }
   }
 
-  .card-container {
+  .gridCardContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 200px);
@@ -160,7 +220,7 @@ const isMobile = ref(isMobileDevice());
 }
 
 @media screen and (min-width: 768px) {
-  .card-container {
+  .gridCardContainer {
     grid-template-columns: repeat(4, 1fr);
   }
 

@@ -30,24 +30,7 @@
 
   <Transition name="info" appear>
     <div>
-      <h2 style="text-align: center; padding-top: 30px;">Education and Experience</h2>
-      <InformationNavBar @infoStateEmit="updateInfoState"/>
-
-      <div class="infoContainer" v-if="infoState === 'academic'">
-        <CardTemplate class="infoCard" :react-to-hover="false">
-          <MarkdownRenderer source="Pathfinding.md"/>
-        </CardTemplate>
-      </div>
-
-      <div class="infoContainer" v-if="infoState === 'personal'">
-        <CardTemplate class="infoCard" :react-to-hover="false">
-          <MarkdownRenderer source="FluidSim.md"/>
-        </CardTemplate>
-
-        <CardTemplate class="infoCard" :react-to-hover="false">
-          <MarkdownRenderer source="Bezier.md"/>
-        </CardTemplate>
-      </div>
+      <InformationCards/>
     </div>
   </Transition>
 
@@ -62,15 +45,12 @@ import {defineComponent, ref} from "vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
-import InformationNavBar from "@/components/InfoNavBar.vue";
+import InformationCards from "@/InformationCards.vue";
 
 defineComponent({
   name: 'App',
   components: {
-    CardTemplate,
-    MarkdownRenderer,
-    CustomFooter,
-    InformationNavBar
+    CustomFooter
   }
 });
 
@@ -79,11 +59,6 @@ function isMobileDevice() {
 }
 
 const isMobile = ref(isMobileDevice());
-const infoState = ref("academic");
-
-const updateInfoState = (newState: string) => {
-  infoState.value = newState;
-}
 </script>
 
 <style>
@@ -163,30 +138,6 @@ const updateInfoState = (newState: string) => {
   gap: 20px;
 }
 
-.infoContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  max-width: 1100px;
-  max-height: 600px;
-  margin: 0 auto;
-  overflow: auto;
-}
-
-.infoContainer::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.infoContainer::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-}
-
-.infoCard {
-  max-width: 95%;
-  flex-shrink: 0;
-}
-
 .v-enter-active, .v-leave-active {
   transition: opacity 0.5s;
 }
@@ -196,7 +147,7 @@ const updateInfoState = (newState: string) => {
 }
 
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 600px) {
   :root{
     --horizontal-padding: 5%;
   }
@@ -236,7 +187,7 @@ const updateInfoState = (newState: string) => {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .gridCardContainer {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -255,6 +206,13 @@ const updateInfoState = (newState: string) => {
 
   .skills {
     grid-area: 2 / 2 / 2 / 2;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  #app {
+    padding-left: calc((100vw - 2000px) / 2);
+    padding-right: calc((100vw - 2000px) / 2);
   }
 }
 </style>

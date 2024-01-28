@@ -1,0 +1,71 @@
+<template>
+  <h2 style="text-align: center; padding-top: 30px;">Education & Experience</h2>
+  <InformationNavBar @infoStateEmit="updateInfoState"/>
+  <div class="infoContainer" v-if="infoState === 'personal'">
+    <CardTemplate class="infoCard" :react-to-hover="false">
+      <MarkdownRenderer source="FluidSim.md"/>
+    </CardTemplate>
+
+    <CardTemplate class="infoCard" :react-to-hover="false">
+      <MarkdownRenderer source="Bezier.md"/>
+    </CardTemplate>
+  </div>
+  <div class="infoContainer" v-if="infoState === 'academic'">
+    <CardTemplate class="infoCard" :react-to-hover="false">
+      <MarkdownRenderer source="Pathfinding.md"/>
+    </CardTemplate>
+  </div>
+</template>
+<script setup lang="ts">
+import {defineComponent, ref} from "vue";
+import CardTemplate from "@/components/CardTemplate.vue";
+import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+import InformationNavBar from "@/components/InfoNavBar.vue";
+
+defineComponent({
+  name: 'InformationCards',
+  components: {
+    InformationNavBar,
+    CardTemplate,
+    MarkdownRenderer
+  }
+});
+
+const infoState = ref("academic");
+
+const updateInfoState = (newState: string) => {
+  infoState.value = newState;
+}
+</script>
+
+<style scoped>
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 1100px;
+  max-height: 600px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.infoContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.infoContainer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+.infoCard {
+  max-width: 95%;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    --horizontal-padding: 5%;
+  }
+}
+</style>

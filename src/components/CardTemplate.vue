@@ -28,6 +28,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 20px;
   overflow: hidden;
   transition: 0.3s;
+  width: 100%;
 }
 
 .outerWithHover:hover {

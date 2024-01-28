@@ -32,17 +32,17 @@
       <InformationNavBar @infoStateEmit="updateInfoState"/>
 
       <div class="infoContainer" v-if="infoState === 'academic'">
-        <CardTemplate class="infoCard">
+        <CardTemplate class="infoCard" :react-to-hover="false">
           <MarkdownRenderer source="Pathfinding.md"/>
         </CardTemplate>
       </div>
 
       <div class="infoContainer" v-if="infoState === 'personal'">
-        <CardTemplate class="infoCard">
+        <CardTemplate class="infoCard" :react-to-hover="false">
           <MarkdownRenderer source="FluidSim.md"/>
         </CardTemplate>
 
-        <CardTemplate class="infoCard">
+        <CardTemplate class="infoCard" :react-to-hover="false">
           <MarkdownRenderer source="Bezier.md"/>
         </CardTemplate>
       </div>

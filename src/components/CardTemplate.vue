@@ -1,5 +1,5 @@
 <template>
-  <div class="outer">
+  <div class="outer" :class="{outerWithHover: props.reactToHover}">
     <div class="inner">
       <slot></slot>
     </div>
@@ -7,6 +7,15 @@
 </template>
 
 <script setup lang="ts">
+import {defineProps} from "vue";
+
+  const props = defineProps({
+    reactToHover: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
+  });
 </script>
 
 <style scoped>
@@ -21,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
-.outer:hover {
+.outerWithHover:hover {
   box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.3);
   transform: scale(1.01);
 

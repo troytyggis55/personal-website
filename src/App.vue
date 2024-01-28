@@ -7,7 +7,6 @@
   </Transition>
 
   <Transition name="grid" appear>
-    <div>
       <div class="gridCardContainer">
         <CardTemplate class="aboutme">
           <MarkdownRenderer source="AboutMe.md"/>
@@ -27,8 +26,11 @@
           <MarkdownRenderer source="AboutThisSite.md"/>
         </CardTemplate>
       </div>
+  </Transition>
 
-      <h2 style="text-align: center; padding-top: 30px;">Projects and Experiences</h2>
+  <Transition name="info" appear>
+    <div>
+      <h2 style="text-align: center; padding-top: 30px;">Education and Experience</h2>
       <InformationNavBar @infoStateEmit="updateInfoState"/>
 
       <div class="infoContainer" v-if="infoState === 'academic'">
@@ -46,9 +48,11 @@
           <MarkdownRenderer source="Bezier.md"/>
         </CardTemplate>
       </div>
-
-      <CustomFooter/>
     </div>
+  </Transition>
+
+  <Transition name="footer" appear>
+    <CustomFooter/>
   </Transition>
 </template>
 
@@ -97,6 +101,24 @@ const updateInfoState = (newState: string) => {
 }
 
 .grid-enter-from, .grid-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.info-enter-active, .info-leave-active {
+  transition: all 1.5s ease 1s;
+}
+
+.info-enter-from, .info-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.footer-enter-active, .footer-leave-active {
+  transition: all 1.5s ease 1.5s;
+}
+
+.footer-enter-from, .footer-leave-to {
   opacity: 0;
   transform: translateY(50px);
 }

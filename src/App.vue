@@ -152,17 +152,12 @@ const updateInfoState = (newState: string) => {
   overflow: auto;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
+.infoContainer::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(134, 150, 220, 0.77);
-  border-radius: 5px;
+.infoContainer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
 }
 
 .infoCard {

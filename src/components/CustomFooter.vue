@@ -6,6 +6,7 @@
     </div>
     <div class="icons">
       <a href="https://github.com/troytyggis55" target=”_blank”><img src="github-mark-white.svg" alt="Github Logo"/></a>
+      <a href="https://www.linkedin.com/in/trygve-j%C3%B8rgensen-80b1b9259/" target=”_blank”><img src="linkedin-round-svgrepo-com.svg" alt="LinkedIn Logo"/></a>
     </div>
   </footer>
 </template>

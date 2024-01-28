@@ -10,7 +10,15 @@
       <MarkdownRenderer source="Bezier.md"/>
     </CardTemplate>
   </div>
+
   <div class="infoContainer" v-if="infoState === 'academic'">
+    <CardTemplate class="infoCard" :react-to-hover="false">
+      <MarkdownRenderer source="Calculator.md"/>
+      <div class="calculatorDiv">
+        <CalculatorBody/>
+      </div>
+    </CardTemplate>
+
     <CardTemplate class="infoCard" :react-to-hover="false">
       <MarkdownRenderer source="Pathfinding.md"/>
     </CardTemplate>
@@ -21,6 +29,7 @@ import {defineComponent, ref} from "vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 import InformationNavBar from "@/components/InfoNavBar.vue";
+import CalculatorBody from "@/components/CalculatorBody.vue";
 
 defineComponent({
   name: 'InformationCards',
@@ -39,6 +48,12 @@ const updateInfoState = (newState: string) => {
 </script>
 
 <style scoped>
+.calculatorDiv {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .infoContainer {
   display: flex;
   flex-direction: column;

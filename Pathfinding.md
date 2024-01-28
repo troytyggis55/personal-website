@@ -1,6 +1,6 @@
 ---
 title: Pathfinding algorithms
-date: 2024-01-01
+date: 2023-11-20
 category: IDATT2101 - Algorithms and Data Structures
 ---
 Our last assignment in our algorithms and data structures class was to implement and compare 

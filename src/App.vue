@@ -2,7 +2,7 @@
   <Transition name="title" appear>
     <div class="pageTitle">
       <h1>Trygve Jørgensen</h1>
-      <img src="ProfilePic.jpg" alt="Profile picture"/>
+      <img src="FormatertHeadshot.jpeg" alt="Profile picture"/>
     </div>
   </Transition>
 

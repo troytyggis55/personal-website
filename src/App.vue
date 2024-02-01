@@ -45,7 +45,7 @@ import {defineComponent, ref} from "vue";
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
-import InformationCards from "@/InformationCards.vue";
+import InformationCards from "@/components/InformationCards.vue";
 
 defineComponent({
   name: 'App',
@@ -107,15 +107,15 @@ const isMobile = ref(isMobileDevice());
   padding-right: var(--horizontal-padding);
 }
 
+h1 {
+  font-size: 2.2em;
+}
+
 .pageTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
-
-  h1 {
-    font-size: 2.2em;
-  }
 }
 
 #profilePicture {
@@ -152,10 +152,8 @@ const isMobile = ref(isMobileDevice());
     --horizontal-padding: 5%;
   }
 
-  .pageTitle {
-    h1 {
-      font-size: 3em;
-    }
+  .pageTitle h1 {
+    font-size: 3em;
   }
 
   #profilePicture {

@@ -101,15 +101,15 @@
     width: 100%;
     border-radius: 10px;
     box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.21);
+  }
 
-    p {
-      margin: 0;
-      padding: 0;
-      font-size: 1.5em;
-      text-align: right;
-      padding-right: 10px;
-      padding-top: 10px;
-    }
+  .calculatorScreen p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 10px;
   }
 
   .calculatorButtons {
@@ -119,30 +119,30 @@
     gap: 10px;
     overflow: visible;
 
-    button {
-      border-radius: 5px;
-      border-style: none;
-      background-color: #626262;
-      box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.19);
-      transition: 0.2s ease-in-out;
-    }
-
-    button:active {
-      margin: auto;
-      transform: scale(0.98);
-      width: 100%;
-      height: 100%;
-      box-shadow: inset -1px -3px 3px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .equalButton {
-      background-color: #009d89;
-    }
-
-    .numButton {
-      background-color: #937676;
-    }
   }
 
+  .calculatorButtons button {
+    border-radius: 5px;
+    border-style: none;
+    background-color: #626262;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.19);
+    transition: 0.2s ease-in-out;
+  }
+
+  .calculatorButtons button:active {
+    margin: auto;
+    transform: scale(0.98);
+    width: 100%;
+    height: 100%;
+    box-shadow: inset -1px -3px 3px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .calculatorButtons .equalButton {
+    background-color: #009d89;
+  }
+
+  .calculatorButtons .numButton {
+    background-color: #937676;
+  }
 
 </style>

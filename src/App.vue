@@ -2,7 +2,7 @@
   <Transition name="title" appear>
     <div class="pageTitle">
       <h1>Trygve Jørgensen</h1>
-      <img src="FormatertHeadshot.jpeg" alt="Profile picture"/>
+      <img src="KvadratProfilbilde.jpeg" alt="Profile picture" id="profilePicture"/>
     </div>
   </Transition>
 
@@ -116,11 +116,11 @@ const isMobile = ref(isMobileDevice());
   h1 {
     font-size: 2.2em;
   }
+}
 
-  img {
-    height: 70px;
-    border-radius: 35px;
-  }
+#profilePicture {
+  height: 70px;
+  border-radius: 35px;
 }
 
 .CVpdf {
@@ -156,10 +156,11 @@ const isMobile = ref(isMobileDevice());
     h1 {
       font-size: 3em;
     }
-    img {
-      height: 100px;
-      border-radius: 50px;
-    }
+  }
+
+  #profilePicture {
+    height: 100px;
+    border-radius: 50px;
   }
 
   .gridCardContainer {

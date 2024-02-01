@@ -80,69 +80,69 @@
 </template>
 
 <style scoped>
-  .calculatorBody {
-    max-width: 220px;
-    max-height: 400px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.calculatorBody {
+  max-width: 300px;
+  max-height: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-    background-color: #424242;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.19);
+  background-color: #424242;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.19);
 
-    border-radius: 20px;
-  }
+  border-radius: 20px;
+}
 
-  .calculatorScreen {
-    background-color: #262626;
-    color: cadetblue;
-    height: 85px;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.21);
-  }
+.calculatorScreen {
+  background-color: #262626;
+  color: cadetblue;
+  height: 85px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.21);
+}
 
-  .calculatorScreen p {
-    margin: 0;
-    padding: 0;
-    font-size: 1.5em;
-    text-align: right;
-    padding-right: 10px;
-    padding-top: 10px;
-  }
+.calculatorScreen p {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 10px;
+}
 
-  .calculatorButtons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 40px);
-    gap: 10px;
-    overflow: visible;
+.calculatorButtons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 40px);
+  gap: 10px;
+  overflow: visible;
+}
 
-  }
+button {
+  border-radius: 5px;
+  border-style: none;
+  color: black;
+  width: auto;
+  background-color: #626262;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.19);
+  transition: 0.2s ease-in-out;
+}
 
-  .calculatorButtons button {
-    border-radius: 5px;
-    border-style: none;
-    background-color: #626262;
-    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.19);
-    transition: 0.2s ease-in-out;
-  }
+.calculatorButtons button:active {
+  margin: auto;
+  transform: scale(0.98);
+  width: 100%;
+  height: 100%;
+  box-shadow: inset -1px -3px 3px 3px rgba(0, 0, 0, 0.1);
+}
 
-  .calculatorButtons button:active {
-    margin: auto;
-    transform: scale(0.98);
-    width: 100%;
-    height: 100%;
-    box-shadow: inset -1px -3px 3px 3px rgba(0, 0, 0, 0.1);
-  }
+.calculatorButtons .equalButton {
+  background-color: #009d89;
+}
 
-  .calculatorButtons .equalButton {
-    background-color: #009d89;
-  }
-
-  .calculatorButtons .numButton {
-    background-color: #937676;
-  }
-
+.calculatorButtons .numButton {
+  background-color: #937676;
+}
 </style>

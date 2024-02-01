@@ -4,41 +4,93 @@
   const calculatorScreenInput = ref("0");
   const calculatorScreenOutput = ref("0");
 
-  function addCharToInput(number) {
-    if (calculatorScreenInput.value.length > 10) {
+  const setNumber = ref(0);
+
+  const currentOperation = ref("");
+
+  function addCharToInput(symbol) {
+    if (calculatorScreenInput.value.length >= 10) {
       return;
     }
-    if (calculatorScreenInput.value === "0") {
-      calculatorScreenInput.value = number;
+
+    if (symbol === "." && !calculatorScreenInput.value.includes(".")) {
+      calculatorScreenInput.value += symbol;
+    } else if (symbol !== ".") {
+      if (calculatorScreenInput.value === "0") {
+        calculatorScreenInput.value = symbol;
+      } else {
+        calculatorScreenInput.value += symbol;
+      }
+    }
+
+    if (currentOperation.value === "") {
+      calculatorScreenOutput.value = calculatorScreenInput.value;
     } else {
-      calculatorScreenInput.value += number;
+      calculatorScreenOutput.value = setNumber.value + currentOperation.value + calculatorScreenInput.value;
     }
   }
 
+  function addOperator(operation) {
+    if (currentOperation.value === "" && setNumber.value === 0) {
+      setNumber.value = parseFloat(calculatorScreenInput.value);
+      calculatorScreenInput.value = "0";
+    }
+
+    currentOperation.value = operation;
+    calculatorScreenOutput.value = setNumber.value + operation + calculatorScreenInput.value;
+  }
+
   function deleteCharFromInput() {
-    if (typeof calculatorScreenInput.value === 'string') {
-      if (calculatorScreenInput.value.length === 1) {
-        calculatorScreenInput.value = "0";
-      } else {
-        calculatorScreenInput.value = calculatorScreenInput.value.slice(0, -1);
-      }
+    if (calculatorScreenInput.value.length === 1) {
+      calculatorScreenInput.value = "0";
     } else {
-      console.error('calculatorScreenInput.value is not a string:', calculatorScreenInput.value);
+      calculatorScreenInput.value = calculatorScreenInput.value.slice(0, -1);
+    }
+
+    if (currentOperation.value === "") {
+      calculatorScreenOutput.value = calculatorScreenInput.value;
+    } else {
+      calculatorScreenOutput.value = setNumber.value + currentOperation.value + calculatorScreenInput.value;
     }
   }
 
   function calculate() {
-    calculatorScreenOutput.value = calculatorScreenInput.value;
+    if (currentOperation.value === "") {
+      return;
+    }
+
+    switch (currentOperation.value) {
+      case "+": setNumber.value += parseFloat(calculatorScreenInput.value); break;
+      case "-": setNumber.value -= parseFloat(calculatorScreenInput.value); break;
+      case "*": setNumber.value *= parseFloat(calculatorScreenInput.value); break;
+      case "/": setNumber.value /= parseFloat(calculatorScreenInput.value); break;
+    }
+
+
+    if (setNumber.value > 9999999999) {
+      setNumber.value = setNumber.value.toExponential(2);
+    } else if (setNumber.value.toString().length > 10) {
+      setNumber.value = setNumber.value.toPrecision(10);
+    }
+
+    calculatorScreenOutput.value = setNumber.value;
     calculatorScreenInput.value = "0";
+    currentOperation.value = "";
   }
 
   function clearAll() {
     calculatorScreenInput.value = "0";
     calculatorScreenOutput.value = "0";
+    setNumber.value = 0;
   }
 
   function clearInput() {
     calculatorScreenInput.value = "0";
+    currentOperation.value = "";
+  }
+
+  function getAnswer() {
+    calculatorScreenInput.value = calculatorScreenOutput.value;
   }
 </script>
 
@@ -51,27 +103,27 @@
 
     <div class="calculatorButtons">
 
-      <button @click="clearAll()" class="cButton">C</button>
-      <button class="ansButton">ANS</button>
+      <button @click="clearAll()" class="cButton">CE</button>
+      <button @click="getAnswer()" class="ansButton">ANS</button>
       <button @click="deleteCharFromInput()" class="delButton">DEL</button>
-      <button @click="addCharToInput('/')" class="divButton">/</button>
+      <button @click="addOperator('/')" class="divButton">/</button>
 
       <button @click="addCharToInput('7')" class="numButton">7</button>
       <button @click="addCharToInput('8')" class="numButton">8</button>
       <button @click="addCharToInput('9')" class="numButton">9</button>
-      <button @click="addCharToInput('*')" class="mulButton">*</button>
+      <button @click="addOperator('*')" class="mulButton">*</button>
 
       <button @click="addCharToInput('4')" class="numButton">4</button>
       <button @click="addCharToInput('5')" class="numButton">5</button>
       <button @click="addCharToInput('6')" class="numButton">6</button>
-      <button @click="addCharToInput('-')" class="subButton">-</button>
+      <button @click="addOperator('-')" class="subButton">-</button>
 
       <button @click="addCharToInput('1')" class="numButton">1</button>
       <button @click="addCharToInput('2')" class="numButton">2</button>
       <button @click="addCharToInput('3')" class="numButton">3</button>
-      <button @click="addCharToInput('+')" class="addButton">+</button>
+      <button @click="addOperator('+')" class="addButton">+</button>
 
-      <button @click="clearInput" class="clearbutton">CE</button>
+      <button @click="clearInput()" class="clearbutton">C</button>
       <button @click="addCharToInput('0')" class="numButton">0</button>
       <button @click="addCharToInput('.')" class="periodButton">.</button>
       <button @click="calculate()" class="equalButton">=</button>
@@ -97,11 +149,28 @@
 .calculatorScreen {
   background-color: #262626;
   color: cadetblue;
-  height: 85px;
-  width: 100%;
+  height: 100px;
+  width: 280px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   border-radius: 10px;
   box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.21);
 }
+
+.calculatorScreen::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.calculatorScreen::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #009d89;
+}
+
+.calculatorScreen p:last-child {
+  color: #bbbbbb;
+}
+
+
 
 .calculatorScreen p {
   margin: 0;

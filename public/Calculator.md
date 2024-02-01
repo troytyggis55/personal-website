@@ -5,9 +5,22 @@ category: IDATT2105 - Fullstack development
 ---
 
 Our second assignment for web development was to create a calculator using Vue. As I already had 
-designed this very website an preparation for this class, this was a trivial task. I have, for 
-simplicity, chosen to use the javascript *eval()* function which is the reason why the calculator 
-dosent function on my website. This function could allow a user with enough knowledge to execute 
-any javascript code on my website, something I naturally would like to avoid.
+designed this very website as preparation for this class, this was a trivial task. To get the assignment
+confirmed, I utilized the JavaScript `eval()` function to evaluate the string expression. This is unsafe
+as `eval()` executes its input as JavaScript code, and should not be used in production.
 
-**Note: Calculator is non-functional on this website**
+    function unsafeCalculateExample() {
+        output.value = eval(input.value);
+    }  
+
+To ensure safe user input, I have "hardcoded" the operators to only work with two numbers at a time.
+
+    function safeCalculateExample() {
+        switch (currentOperation.value) {
+            case "+": output.value += parseFloat(input.value); break;
+            case "-": output.value -= parseFloat(input.value); break;
+            case "*": output.value *= parseFloat(input.value); break;
+            case "/": output.value /= parseFloat(input.value); break;
+        }
+    }
+

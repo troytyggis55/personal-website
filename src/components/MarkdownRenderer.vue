@@ -88,4 +88,25 @@ onMounted( () => {
   margin-left: auto;
   margin-right: auto;
 }
+
+.md pre {
+  background-color: #383096;
+  color: #7ebfff;
+  padding: 10px;
+  border-radius: 10px;
+  overflow-x: scroll;
+}
+
+.md pre::-webkit-scrollbar {
+  height: 10px;
+}
+
+.md pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.md pre::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #7769DD
+}
 </style>

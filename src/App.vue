@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import {defineComponent, ref} from "vue";
+import {defineComponent} from "vue";
 
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
@@ -55,12 +55,7 @@ defineComponent({
   }
 });
 
-function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-store.dispatch('setIsMobileDevice', isMobileDevice());
-const isMobile = ref(store.state.isMobileDevice);
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 </script>
 

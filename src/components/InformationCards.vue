@@ -38,7 +38,6 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import store from "@/store";
 import CardTemplate from "@/components/CardTemplate.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 import InformationNavBar from "@/components/InfoNavBar.vue";
@@ -49,7 +48,9 @@ import FluidSimulation from "@/components/FluidSimulation.vue";
 const isPopupVisible = ref(false);
 const infoState = ref("academic");
 
-const isMobile = store.state.isMobileDevice;
+const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 
 const updateInfoState = (newState: string) => {
   infoState.value = newState;

@@ -6,12 +6,13 @@
     <CardTemplate class="infoCard" :react-to-hover="false">
       <MarkdownRenderer source="FluidSim.md"/>
 
+
       <PopupModal v-if="isPopupVisible" @close="isPopupVisible = false">
         <h2>Fluid Simulation</h2>
         <FluidSimulation/>
         <button @click="isPopupVisible = false">Close</button>
       </PopupModal>
-      <div class="simulationButtonDiv">
+      <div class="simulationButtonDiv" v-if="!isMobile">
         <button @click="isPopupVisible = true" class="simulationButton">Open Simulation</button>
       </div>
     </CardTemplate>
@@ -37,6 +38,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import store from "@/store";
 import CardTemplate from "@/components/CardTemplate.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 import InformationNavBar from "@/components/InfoNavBar.vue";
@@ -46,6 +48,8 @@ import FluidSimulation from "@/components/FluidSimulation.vue";
 
 const isPopupVisible = ref(false);
 const infoState = ref("academic");
+
+const isMobile = store.state.isMobileDevice;
 
 const updateInfoState = (newState: string) => {
   infoState.value = newState;

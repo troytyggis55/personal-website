@@ -24,7 +24,7 @@
   background-color: rgba(106, 151, 204, 0.73);
   padding: 50px;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 14px 28px, rgba(0, 0, 0, 0.22) 0 10px 10px;
   -webkit-backdrop-filter: blur(3px);  /* Safari 9+ */
   backdrop-filter: blur(3px); /* Chrome and Opera */
 

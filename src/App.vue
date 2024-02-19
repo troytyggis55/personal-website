@@ -46,6 +46,7 @@ import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 import InformationCards from "@/components/InformationCards.vue";
+import store from "@/store";
 
 defineComponent({
   name: 'App',
@@ -58,7 +59,9 @@ function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
-const isMobile = ref(isMobileDevice());
+store.dispatch('setIsMobileDevice', isMobileDevice());
+const isMobile = ref(store.state.isMobileDevice);
+
 </script>
 
 <style>

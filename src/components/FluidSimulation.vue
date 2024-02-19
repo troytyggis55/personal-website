@@ -20,6 +20,8 @@ export default {
       let friction = 0.99; // How much the nodes slow down over time, 1 = no friction
 
       let nodes = []; // Array to hold all nodes
+
+      //TODO: Use quadtree instead
       let grid = []; // Grid to hold nodes for faster neighbor search
 
       p.setup = () => {
@@ -55,8 +57,8 @@ export default {
 
         //Draw fps in top right corner
         p.fill(255);
-        p.text("FPS: " + p.round(p.frameRate()), p.width - 50, 20);
-        p.text("Nodes: " + nodes.length, p.width - 60, 40);
+        p.text("FPS: " + p.round(p.frameRate()), 5, 20);
+        p.text("Nodes: " + nodes.length, 5, 40);
       };
 
       class Node {

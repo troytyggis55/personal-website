@@ -25,15 +25,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .outer {
   background-color: #83b0e498;
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   overflow: hidden;
   transition: 0.3s;
   width: 100%;
-}
-
-.outerWithHover:hover {
-  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.3);
-  transform: scale(1.01);
+  -webkit-backdrop-filter: blur(3px);  /* Safari 9+ */
+  backdrop-filter: blur(3px); /* Chrome and Opera */
 
 }
 
@@ -47,6 +45,8 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 20px;
   overflow: auto;
   overflow-wrap: break-word;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 ::-webkit-scrollbar {

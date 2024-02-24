@@ -1,12 +1,18 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import {onMounted, onUnmounted} from "vue";
 import victor from "victor";
 
-let canvas = document.getElementById("canvas");
+let intervalId;
+let resizeListener;
 
-let run = ref(true);
 
 onMounted(() => {
+  let canvas = document.getElementById("canvas");
+  if (!canvas) {
+    console.error('Canvas element not found!');
+    return;
+  }
+
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   let pixelAmount = canvas.width * canvas.height;
@@ -27,10 +33,9 @@ onMounted(() => {
         randRange(-1, 1), minDimension / searchRadiusFraction));
   }
 
-  addEventListener("resize", () => {
+  resizeListener = () => {
     let xdiff = window.innerWidth / canvas.width;
     let ydiff = window.innerHeight / canvas.height;
-    let totaldiff = window.innerWidth * window.innerHeight / (canvas.width * canvas.height);
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -52,13 +57,11 @@ onMounted(() => {
             randRange(-1, 1), minDimension / searchRadiusFraction));
       }
     }
+  };
 
-  });
+  window.addEventListener("resize", resizeListener);
 
-  setInterval(() => {
-    if (!run.value) {
-      return;
-    }
+  intervalId = setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let node of nodes) {
@@ -71,6 +74,13 @@ onMounted(() => {
       node.drawLines(ctx, canvas);
     }
   }, 1000 / 24);
+});
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  window.removeEventListener("resize", resizeListener);
 });
 
 class Node {
@@ -222,8 +232,7 @@ const randRange = (min, max) => { return Math.random() * (max - min) + min; };
 </script>
 
 <template>
-  <canvas ref="canvas"></canvas>
-  <button @click="run = !run">{{ run ? "Pause" : "Run" }}</button>
+  <canvas id="canvas"></canvas>
 </template>
 
 <style scoped>
@@ -233,4 +242,5 @@ canvas {
   left: 0;
   z-index: -1;
 }
+
 </style>

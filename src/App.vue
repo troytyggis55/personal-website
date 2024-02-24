@@ -1,4 +1,11 @@
 <template>
+
+  <Transition name="network" appear>
+    <NetworkCanvas v-if="state" />
+  </Transition>
+
+  <FloatingMenu/>
+
   <Transition name="title" appear>
     <div class="pageTitle">
       <h1>Trygve Jørgensen</h1>
@@ -40,22 +47,24 @@
 </template>
 
 <script setup lang="ts">
-import {defineComponent} from "vue";
-
 import CardTemplate from "@/components/CardTemplate.vue";
 import CustomFooter from "@/components/CustomFooter.vue";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 import InformationCards from "@/components/InformationCards.vue";
-import store from "@/store";
+import NetworkCanvas from "@/components/NetworkCanvas.vue";
+import FloatingMenu from "@/components/EffectsToggle.vue";
 
-defineComponent({
-  name: 'App',
-  components: {
-    CustomFooter
-  }
-});
+import { useStore } from "vuex";
+import { ref } from "vue";
 
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+const store = useStore();
+let state = ref(store.state.showEffects);
+
+store.watch(() => store.state.showEffects, (newVal) => {
+  state.value = newVal;
+});
 
 </script>
 
@@ -95,6 +104,15 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
   opacity: 0;
   transform: translateY(50px);
 }
+
+.network-enter-active, .network-leave-active {
+  transition: 0.5s;
+}
+
+.network-enter-from, .network-leave-to {
+  opacity: 0;
+}
+
 
 :root {
   --horizontal-padding: 5%;
@@ -136,20 +154,8 @@ h1 {
   gap: 20px;
 }
 
-.v-enter-active, .v-leave-active {
-  transition: opacity 0.5s;
-}
-
-.v-enter-from, .v-leave-to {
-  opacity: 0;
-}
-
 
 @media screen and (min-width: 600px) {
-  :root{
-    --horizontal-padding: 5%;
-  }
-
   .pageTitle h1 {
     font-size: 3em;
   }
@@ -213,3 +219,4 @@ h1 {
   }
 }
 </style>
+

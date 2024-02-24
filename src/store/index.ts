@@ -2,14 +2,14 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    isMobileDevice: false,
+    showEffects: true,
   },
   getters: {
-    isMobile: (state: { isMobileDevice: any; }) => state.isMobileDevice,
+    showEffects: state => state.showEffects,
   },
   mutations: {
-    SET_IS_MOBILE(state: { isMobileDevice: any; }, value: any) {
-      state.isMobileDevice = value;
+    toggleEffects(state) {
+      state.showEffects = !state.showEffects
     }
   },
   actions: {

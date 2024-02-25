@@ -1,10 +1,9 @@
 <script setup>
-import {onMounted, onUnmounted} from "vue";
+import { onMounted, onUnmounted} from "vue";
 import victor from "victor";
 
 let intervalId;
 let resizeListener;
-
 
 onMounted(() => {
   let canvas = document.getElementById("canvas");
@@ -242,5 +241,4 @@ canvas {
   left: 0;
   z-index: -1;
 }
-
 </style>

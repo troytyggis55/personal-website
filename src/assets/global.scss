@@ -8,6 +8,7 @@ html {
 
   font-family: 'Montserrat', sans-serif;
   color: aliceblue;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -59,19 +60,20 @@ h4 {
 }
 
 button {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1em;
+  background: #443598;
+  box-shadow: rgb(68, 53, 152) 0px 5px 15px;
+  color: aliceblue;
+
   padding: 10px 20px;
+
   border: none;
   border-radius: 5px;
-  background: #443598;
-  color: aliceblue;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: rgb(68, 53, 152) 0px 5px 15px;
+
   &:hover {
     background: #2b217a;
   }
+
+  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar {

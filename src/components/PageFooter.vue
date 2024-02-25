@@ -1,20 +1,18 @@
 <template>
   <footer>
-    <div class="details">
+    <div id="details">
       <p>+47 94 05 05 56</p>
       <a href="mailito: trygveabjo@gmail.com"><p>trygveabjo@gmail.com</p></a>
     </div>
-    <div class="icons">
-      <a href="https://github.com/troytyggis55" target=”_blank”><img src="github-mark-white.svg" alt="Github Logo"/></a>
-      <a href="https://www.linkedin.com/in/trygve-j%C3%B8rgensen-80b1b9259/" target=”_blank”><img src="linkedin-round-svgrepo-com.svg" alt="LinkedIn Logo"/></a>
+    <div id="icons">
+      <a href="https://github.com/troytyggis55" target=”_blank”><img src="svg/github-mark-white.svg"
+                                                                     alt="Github Logo"/></a>
+      <a href="https://www.linkedin.com/in/trygve-j%C3%B8rgensen-80b1b9259/" target=”_blank”><img
+          src="svg/linkedin-round-svgrepo-com.svg" alt="LinkedIn Logo"/></a>
     </div>
   </footer>
 </template>
-<script>
-export default {
-  name: 'CustomFooter'
-}
-</script>
+
 <style scoped>
 footer {
   display: block;
@@ -38,7 +36,7 @@ img {
   height: 40px;
 }
 
-.icons {
+#icons {
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -57,10 +55,10 @@ img {
     text-align: right;
   }
 
-  .details {
+  #details {
     text-align: right;
   }
-  .icons {
+  #icons {
     justify-content: left;
   }
 }

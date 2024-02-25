@@ -1,6 +1,14 @@
+<template>
+<div :class="{ offBack: state }">
+  <button @click="toggleButton" :class="{ offFront: state }">
+    <img src="svg/sparkle.svg" alt="sparkle" />
+  </button>
+</div>
+</template>
+
 <script setup lang="ts">
+import { ref } from "vue";
 import { useStore } from "vuex";
-import {ref} from "vue";
 
 const store = useStore();
 let state = ref(store.state.showEffects);
@@ -14,15 +22,6 @@ store.watch(() => store.state.showEffects, (newVal) => {
 }, {immediate: true});
 
 </script>
-
-
-<template>
-<div :class="{ offBack: state }">
-  <button @click="toggleButton" :class="{ offFront: state }">
-    <img src="sparkle.svg" alt="sparkle" />
-  </button>
-</div>
-</template>
 
 <style scoped>
 div {

@@ -95,13 +95,13 @@
 </script>
 
 <template>
-  <div class="calculatorBody">
-    <div class="calculatorScreen">
+  <div id="calculatorBody">
+    <div id="calculatorScreen">
       <p>{{ calculatorScreenOutput }}</p>
       <p>{{ calculatorScreenInput }}</p>
     </div>
 
-    <div class="calculatorButtons">
+    <div id="calculatorButtons">
 
       <button @click="clearAll()" class="cButton">CE</button>
       <button @click="getAnswer()" class="ansButton">ANS</button>
@@ -132,74 +132,49 @@
 </template>
 
 <style scoped>
-.calculatorBody {
-  max-width: 300px;
-  max-height: 500px;
-  padding: 20px;
+#calculatorBody {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
   gap: 20px;
+  border-radius: 20px;
 
   background-color: #424242;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.19);
-
-  border-radius: 20px;
 }
 
-.calculatorScreen {
-  background-color: #262626;
-  color: cadetblue;
+#calculatorScreen {
   height: 100px;
-  width: 280px;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  width: 100%;
   border-radius: 10px;
+
+  background-color: #262626;
   box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.21);
+  color: cadetblue;
 }
 
-.calculatorScreen::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.calculatorScreen::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #009d89;
-}
-
-.calculatorScreen p:last-child {
+#calculatorScreen p:last-child {
   color: #bbbbbb;
 }
 
-
-
-.calculatorScreen p {
+#calculatorScreen p {
   margin: 0;
-  padding: 0;
   font-size: 1.5em;
   text-align: right;
-  padding-right: 10px;
-  padding-top: 10px;
+  padding: 10px 10px 0 0;
 }
 
-.calculatorButtons {
+#calculatorButtons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 40px);
   gap: 10px;
-  overflow: visible;
+  width: 100%;
 }
 
-button {
-  border-radius: 5px;
-  border-style: none;
-  color: black;
-  width: auto;
-  background-color: #626262;
-  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.19);
-  transition: 0.2s ease-in-out;
-}
-
-.calculatorButtons button:active {
+#calculatorButtons button:active {
   margin: auto;
   transform: scale(0.98);
   width: 100%;
@@ -207,11 +182,27 @@ button {
   box-shadow: inset -1px -3px 3px 3px rgba(0, 0, 0, 0.1);
 }
 
-.calculatorButtons .equalButton {
+#calculatorButtons .equalButton {
   background-color: #009d89;
 }
 
-.calculatorButtons .numButton {
+#calculatorButtons .numButton {
   background-color: #937676;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border-style: none;
+
+  color: black;
+  background-color: #626262;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.19);
+
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #8f8f8f;
 }
 </style>

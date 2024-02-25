@@ -1,63 +1,35 @@
 <template>
-
   <Transition name="network" appear>
-    <NetworkCanvas v-if="state" />
+    <CanvasNetwork v-if="state" />
   </Transition>
-
-  <FloatingMenu/>
+  <ControlNetwork/>
 
   <Transition name="title" appear>
-    <div class="pageTitle">
-      <h1>Trygve Jørgensen</h1>
-      <img src="KvadratProfilbilde.jpeg" alt="Profile picture" id="profilePicture"/>
-    </div>
+    <PageHeader/>
   </Transition>
 
   <Transition name="grid" appear>
-      <div class="gridCardContainer">
-        <CardTemplate class="aboutme">
-          <MarkdownRenderer source="AboutMe.md"/>
-        </CardTemplate>
-
-        <CardTemplate class="cv">
-          <MarkdownRenderer source="CV.md"/>
-          <embed v-if="!isMobile" src="CV.pdf#toolbar=0&view=fitH" class="CVpdf" alt="CV"/>
-          <img v-if="isMobile" src="CV.png" class="CVpng" alt="CV"/>
-        </CardTemplate>
-
-        <CardTemplate class="skills">
-          <MarkdownRenderer source="Skills.md"/>
-        </CardTemplate>
-
-        <CardTemplate class="aboutthissite">
-          <MarkdownRenderer source="AboutThisSite.md"/>
-        </CardTemplate>
-      </div>
+    <PageGrid/>
   </Transition>
 
-  <Transition name="info" appear>
-    <div>
-      <InformationCards/>
-    </div>
+  <Transition name="list" appear>
+    <PageList/>
   </Transition>
 
   <Transition name="footer" appear>
-    <CustomFooter/>
+    <PageFooter/>
   </Transition>
 </template>
 
 <script setup lang="ts">
-import CardTemplate from "@/components/CardTemplate.vue";
-import CustomFooter from "@/components/CustomFooter.vue";
-import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
-import InformationCards from "@/components/InformationCards.vue";
-import NetworkCanvas from "@/components/NetworkCanvas.vue";
-import FloatingMenu from "@/components/EffectsToggle.vue";
-
-import { useStore } from "vuex";
-import { ref } from "vue";
-
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+import {useStore} from "vuex";
+import {ref} from "vue";
+import CanvasNetwork from "@/components/CanvasNetwork.vue";
+import ControlNetwork from "@/components/ControlNetwork.vue";
+import PageHeader from "@/components/PageHeader.vue";
+import PageGrid from "@/components/PageGrid.vue";
+import PageList from "@/components/PageList.vue";
+import PageFooter from "@/components/PageFooter.vue";
 
 const store = useStore();
 let state = ref(store.state.showEffects);
@@ -65,7 +37,6 @@ let state = ref(store.state.showEffects);
 store.watch(() => store.state.showEffects, (newVal) => {
   state.value = newVal;
 });
-
 </script>
 
 <style>
@@ -87,11 +58,11 @@ store.watch(() => store.state.showEffects, (newVal) => {
   transform: translateY(50px);
 }
 
-.info-enter-active, .info-leave-active {
+.list-enter-active, .list-leave-active {
   transition: all 1.5s ease 1s;
 }
 
-.info-enter-from, .info-leave-to {
+.list-enter-from, .list-leave-to {
   opacity: 0;
   transform: translateY(50px);
 }
@@ -113,7 +84,6 @@ store.watch(() => store.state.showEffects, (newVal) => {
   opacity: 0;
 }
 
-
 :root {
   --horizontal-padding: 5%;
 }
@@ -121,95 +91,6 @@ store.watch(() => store.state.showEffects, (newVal) => {
 #app {
   padding-left: var(--horizontal-padding);
   padding-right: var(--horizontal-padding);
-}
-
-h1 {
-  font-size: 2.2em;
-}
-
-.pageTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-#profilePicture {
-  height: 70px;
-  border-radius: 35px;
-}
-
-.CVpdf {
-  width: 100%;
-  height: 100%;
-}
-
-.CVpng {
-  width: 100%;
-}
-
-.gridCardContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-
-@media screen and (min-width: 600px) {
-  .pageTitle h1 {
-    font-size: 3em;
-  }
-
-  #profilePicture {
-    height: 100px;
-    border-radius: 50px;
-  }
-
-  .gridCardContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 200px);
-    gap: 20px;
-    overflow: visible;
-  }
-
-  .aboutme {
-    grid-area: 1 / 1 / 1 / 4;
-  }
-
-  .cv {
-    grid-area: 2 / 1 / 2 / 3;
-  }
-
-  .aboutthissite {
-    grid-area: 3 / 1 / 3 / 4;
-  }
-
-  .skills {
-    grid-area: 2 / 3 / 2 / 4;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .gridCardContainer {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .aboutme {
-    grid-area: 1 / 1 / 1 / 3;
-  }
-
-  .cv {
-    grid-area: 1 / 3 / 3 / 5;
-  }
-
-  .aboutthissite {
-    grid-area: 2 / 1 / 2 / 1;
-  }
-
-  .skills {
-    grid-area: 2 / 2 / 2 / 2;
-  }
 }
 
 @media screen and (min-width: 2000px) {

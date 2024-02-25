@@ -1,14 +1,14 @@
 <template>
-  <div class="header">
-    <h2 class="title">{{ metaData.title }}</h2>
-    <div class="details">
+  <div id="header">
+    <h2 id="title">{{ metaData.title }}</h2>
+    <div id="details">
       <p v-if="metaData.date !== ''">{{ new Date(metaData.date).toDateString() }}</p>
       <p v-if="metaData.repo !== ''"><a :href="metaData.repo" target="_blank">Github</a></p>
       <p v-if="metaData.category !== ''">{{ metaData.category }}</p>
     </div>
   </div>
 
-  <div class="md" v-html="markdown.render(markdownContent)" />
+  <div id="md" v-html="markdown.render(markdownContent)" />
 </template>
 
 <script setup lang="ts">
@@ -52,16 +52,16 @@ onMounted( () => {
 </script>
 
 <style scoped>
-.header {
+#header {
   margin-top: 20px;
 }
 
-.title {
+#title {
   margin: 0;
   padding: 0;
 }
 
-.details {
+#details {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -78,18 +78,18 @@ onMounted( () => {
 </style>
 
 <style>
-.md img {
+#md img {
   width: 100%;
-  height: 100%; /* changed to 100% */
+  height: 100%;
   max-width: 500px;
   max-height: 500px;
-  object-fit: contain; /* ensures aspect ratio is maintained */
+  object-fit: contain;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.md pre {
+#md pre {
   background-color: #383096;
   color: #7ebfff;
   padding: 10px;
@@ -97,15 +97,15 @@ onMounted( () => {
   overflow-x: scroll;
 }
 
-.md pre::-webkit-scrollbar {
+#md pre::-webkit-scrollbar {
   height: 10px;
 }
 
-.md pre::-webkit-scrollbar-track {
+#md pre::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.md pre::-webkit-scrollbar-thumb {
+#md pre::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #7769DD
 }

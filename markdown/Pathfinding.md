@@ -13,7 +13,7 @@ the roads connecting each intersection roads. This is what this assignment was b
 successfully implementing each algorithm we could visualize the search by drawing each all the 
 visited nodes. 
 
-![Pathfinding](Pathfinding.png)
+![Pathfinding](../images/Pathfinding.png)
 
 Above you can see the result from finding the shortest path from Orkanger to Trondheim. In Red 
 we can dijkstra's algorithm(Red) and ALT(Green) with both finding the same path(Yellow).

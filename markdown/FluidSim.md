@@ -9,7 +9,7 @@ I, as always, got heavily inspired to try a simple version myself. I had the bas
 of how simple vector math could be used to simulate such a system as I had earlier tried similar 
 projects.
 
-![FluidSim](FluidSim.gif)
+![FluidSim](../images/FluidSim.gif)
 
 Each particle has a position, velocity and acceleration. The acceleration is calculated by the 
 particles proximity to other particles. To avoid θ(n^2) complexity, the screen is divided into a 

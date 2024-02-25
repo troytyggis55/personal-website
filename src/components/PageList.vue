@@ -9,7 +9,7 @@
       </ContainerCard>
 
       <ContainerCard class="infoCard">
-        <MarkdownRenderer source="markdown/AboutMe.md"/>
+        <MarkdownRenderer source="markdown/Bezier.md"/>
       </ContainerCard>
     </div>
 
